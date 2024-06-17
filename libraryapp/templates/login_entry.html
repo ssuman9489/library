@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+    body{
+        max-height:100%;
+        min-height: 100%;
+        background-image: url('/static/images/login.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+    }
+    .login-container {
+       
+        background-color:#ffffff61;
+        max-width: 360px;
+        margin-left: 900px;
+        margin-top: 100px;
+        padding: 40px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    }        
+    .login-container h1 {
+        margin-bottom: 10px;
+        text-align: center;
+        color: #333;
+    }
+            
+    .form-group {
+        margin-bottom: 20px;
+    }
+            
+    .form-group label {
+        display: block;
+        font-weight: bold;
+        color: #000000;
+    }
+            
+    .form-group input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    .register-link {
+        text-align: left;
+        margin-top: 20px;
+    }
+
+    .register-link a {
+        color: #007bff;
+        text-decoration: none;
+    }
+            
+    .register-link a:hover {
+        text-decoration: underline;
+    }
+    .pass{
+        text-decoration:none;
+        text-align: left;
+        margin-top: 20px;
+    }
+            
+    .pass a {
+        color: #da2814e1;
+        text-decoration: none;
+    }
+            
+    .pass a:hover {
+        text-decoration: underline;}
+
+    .login-container h1 {
+        margin-bottom: 20px;
+        text-align: center;
+        color: #000000;
+    }
+            
+    .form-group {
+        margin-bottom: 20px;
+    }
+            
+    .form-group label {
+        display: block;
+        font-weight: bold;
+        color: #110b0b;
+    }
+            
+    .form-group input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+            
+    .login-container input[type=submit] {
+        width: 30%;
+        padding: 10px;
+        margin-left: 40%;
+        background-color: #007bff;
+        border: none;
+        border-radius: 5px;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+            
+    .login-container input[type=submit]:hover {
+        background-color: #0056b3;
+    }
+    .login-container p{
+        font-weight: bold;
+        font-size: 20px;
+        margin-left: 10px;
+    
+    }
+</style>
+
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <form name="form1" method="POST" action="{% url 'login_submit' %}"> 
+        {% csrf_token %}
+<div class="loginbody">
+    <div class="login-container">
+        <h2 align="center">Login</h2>
+           <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="T1" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="T2" required>
+            </div>
+            <input type="submit" value="Login">
+      
+        <p class="register-link">Don't have an account? <a href="{% url 'register' %}">Register</a></p>
+        <p><a href="{% url "password_reset" %}">Forgotten your password?</a></p>
+        </div>
+    </div>   
+</div>
+</form> 
+{% include 'footer.html' %}
+</body>
+</html>

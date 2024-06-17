@@ -1,0 +1,142 @@
+<Html>  
+  <head>   
+      <title> Book List  </title>  
+      {% load static %}
+      <link rel="stylesheet"  href="{% static 'libraryapp\static\style.css' %}">
+      <style>
+          body{
+              background-image: url('/static/images/2.jpg');
+              background-repeat: no-repeat;
+              background-size: cover;
+              background-position: center;
+              background-attachment: fixed;
+              margin: 0; 
+              padding: 0;
+          }
+          table {
+              border-collapse: collapse;
+              width: 100%;
+          }
+          h1{
+              text-align:center;
+              font-size:40px;
+              font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+              background: -webkit-linear-gradient(#eae870, #9b4040);
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+            }
+          th {
+              background-color: #f2f2f2;
+              border: 1px solid #030405;
+              text-align: left;
+              padding: 8px;
+          }
+          
+          td {
+              background-color: #dcc7bad7;
+              border: 1px solid #030405;
+              text-align: left;
+              padding: 8px;
+          }
+          tr:nth-child(even) {
+              background-color: #948074d7;
+          }
+          
+          img {
+              max-width: 100px;
+              max-height: 100px;
+          }
+          .right-top a {
+              font-weight: bold;
+              margin-left: 10px;
+              text-decoration: none;
+              color:black;
+              padding: 10px ;
+          }
+          .right-top a:hover {
+            background-color: #315e7bd6;
+            border-radius: 10px;
+          }
+          .last{
+              margin-top:50%;
+          }
+          input[type="text"] {
+              margin-bottom:20px;
+              width: 400px;
+              margin-left:65%;
+              padding: 8px;
+              border-radius: 4px;
+              border: 1px solid #ccc;
+              margin-right: 5px;
+          }
+  
+          button[type="submit"] {
+              
+              padding: 8px 12px;
+              border: none;
+              background-color: #4CAF50;
+              color: white;
+              border-radius: 4px;
+              cursor: pointer;
+          }
+  
+          button[type="submit"]:hover {
+              background-color: #45a049;
+          }
+      </style>
+  </head>
+<body> 
+      {% include 'navbar.html' %}
+      <div class="right-top">
+          <a href="{% url 'logout' %}">Logout</a>
+  </div>
+  <h1> Book List </h1> 
+  <table>
+      <form method="get" action="{% url 'book' %}">
+          <input type="text" name="search" value="{{ search_query }}" placeholder="Search books....">
+          <button type="submit">Search</button>
+      </form> 
+  <tr>
+  <th>ID</th><th>BookName</th><th>Description</th><th>Author</th><th>Price</th><th>Category</th><th>Pages</th><th>Date_Of_Publish</th><th>Photo</th><th>Issue Book</th>
+  </tr>
+  
+      {% for i in S1 %}
+      <tr>
+          <td>{{i.id}}</td>
+          <td>{{i.BookName}}</td>
+          <td>{{i.Description}}</td>
+          <td>{{i.Author}}</td>
+          <td>{{i.Price}}</td>
+          <td>{{i.Category}}</td>
+          <td>{{i.Pages}}</td>
+          <td>{{i.Date_Of_Publish}}</td>
+          <td>
+            {% if i.Photo %}
+                <img src="{{ i.Photo.url }}" alt="Cover Pic">
+            {% else %}
+               <p>No Photo</p>
+            {% endif %}
+        </td>
+        <td><a href="{% url 'choose' i.id %}">Details</a></td>
+      </tr>
+      {% empty %}
+      <!-- Display message if no books found -->
+      <tr>
+          <td colspan="10">No books found</td>
+      </tr>
+     
+  {% endfor %}
+  
+</table>
+
+  <div class="last">
+  {% include 'footer.html' %}</div>
+  
+</body>
+</html>    
+    
+    
+ 
+ 
+ 
+ 

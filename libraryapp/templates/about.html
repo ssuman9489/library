@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <style>
+        /* Internal CSS starts here */
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('/static/images/2.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+        }
+        
+        header {
+            background: linear-gradient(to right,#134e73 ,#2796db, #b66753 ,#a06556 );
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        
+        h1 {
+            margin-top: 0;
+            color:white;
+        }
+        
+        .container {
+            background-color:#fcfcfc6c;
+            color:black;
+            max-width: 800px;
+            margin:  auto;
+            padding: 0 10px;
+            border-radius: 8px;
+            box-shadow: 5px 0px 10px 0px rgba(113, 176, 58, 0.1);
+        }
+        
+        p {
+            font-size: 20px;
+            line-height: 1.5;
+            color:black;
+        }
+        .right-top {
+            font-size:20px;
+            color: white;
+            position: absolute;
+            top: 15px;
+            right: 25px;
+        }
+        .right-top a {
+            margin-left: 10px;
+            text-decoration: none;
+            color: white;
+        }
+        /* Internal CSS ends here */
+    </style>
+</head>
+<body>
+    <header>
+        <h1>About Us</h1>
+       <div class="right-top"> <a href="{% url 'main' %}">Home</a> </div>
+    </header>
+    
+    <div class="container">
+        <p align="center">Welcome to our website! </p>
+        
+        <h2 align="center">Our Story</h2>
+        <p>A library management system is a software solution designed to help libraries efficiently manage their resources, including books, journals, digital media, and other materials, as well as the services they provide to patrons. Here's a summary of key aspects:</p>
+        <p>1. <b>Cataloging and Inventory Management</b>: The system allows librarians to catalog and organize library materials, including information such as title, author, publication date, genre, and availability status. It helps in tracking the location and status of each item in the library's collection.
+
+            <br>2. <b>Patron Management</b>: Library management systems facilitate the registration and management of library users, including issuing library cards, maintaining borrower records, and tracking borrowing history.
+            
+            <br>3. <b>Circulation Control</b>: These systems automate the process of checking items in and out of the library, managing due dates, issuing fines for late returns, and handling reservations and holds.
+            
+            <br>4. <b>Online Public Access Catalog (OPAC)</b>: OPAC provides patrons with a user-friendly interface to search for library materials, check availability, place holds, and access digital resources remotely.
+            
+            <br>5. <b>Digital Resource Management</b>: Many modern library management systems integrate digital content management, allowing libraries to manage e-books, electronic journals, databases, and other digital resources alongside physical collections.</br>
+            
+           
+           
+        
+        <h2 align="center">Our Team</h2>
+        <p>We have a talented team of individuals who are passionate about Software Development. Meet our team:</p>
+        <ul>
+            <li>Kailash Patel - C E O</li>
+            <li>Saurabh suman - Developer</li>
+            <!-- Add more team members as needed -->
+        </ul>
+        
+        <h2 align="center">Contact Us</h2>
+        <p>If you have any questions or inquiries, feel free to reach out to us at @Techonet.</p>
+    </div>
+    {% include 'footer.html' %}
+</body>
+</html>

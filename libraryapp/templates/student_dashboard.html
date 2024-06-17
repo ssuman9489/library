@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    {% load static %}
+   
+    <style>
+      body {
+        background-image: url('/static/images/4.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        margin: 0; 
+        padding: 0;
+      }
+      .viewpage {
+        margin-left: 30%;
+        font-size: 20px;
+        padding: 10px;
+      }
+      h1{
+        margin-left: 35%;
+        margin-top: 2%;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: -webkit-linear-gradient(#eae870, #9b4040);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size:40px;
+        
+      }
+      .student{
+        border-radius: 20px;
+        width:30%;
+        background-color: #9f948dba;
+        margin-left: 33%;
+        margin-top: 5%;
+        text-align:center;
+        
+      }
+      .student a {
+        font-size:30px;
+        text-decoration: none;
+        color:black;
+      }
+      .student a:hover {
+        color: blue; 
+    }
+      .right-top a {
+        font-weight: bold;
+        margin-left: 10px;
+        text-decoration: none;
+        color: black;
+        padding: 10px;
+      }
+      .right-top a:hover {
+        background-color: #315e7bd6;
+        border-radius: 10px;
+      }
+      .last {
+        margin-top: 50%;
+      }
+    </style>
+</head>
+<body>
+  {% include 'navbar.html' %}
+  <div class="right-top">
+    <a href="{% url 'logout' %}">Logout</a>
+  </div>
+  
+  <h1>Student Dashboard</h1>
+  <div class="student">
+    <a href="{% url 'student_displaybook' %}"><h3>Display Available Books</h3></a>
+    <a href="{% url 'issued_book' %}"><h3>Display Issued Books</h3></a>
+  </div>
+  <div class="last">
+    {% include 'footer.html' %}
+  </div>
+</body>
+</html>

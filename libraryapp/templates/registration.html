@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registration</title>
+<style>
+    body{
+        background-image: url('/static/images/login.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    }
+    .registration-container{
+        background-color: #ecf0efb5;
+        max-width: 400px;
+        margin-top:100px;
+        margin-left: 900px;
+        padding: 10px;
+        border-radius: 8px;
+        box-shadow: 5px 0px 10px 0px rgba(113, 176, 58, 0.1);
+    }
+    .registration-container h2 {
+        text-align: center;
+    }
+    .registration-container label{
+        font-size:17px;
+        
+    }
+    .registration-container p{
+        font-size:16px;
+    }
+    .registration-container input[type="text"],
+    .registration-container input[type="email"],
+    .registration-container input[type="password"],
+    .registration-container input[type="Password2"],
+    .registration-container select,
+    .registration-container input[type="date"]
+     {
+        
+        width: 100%;
+        padding: 10px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    .registration-container input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+    }
+        
+    .registration-container input[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+    .login-link{
+        font-size:20px;
+        color:black;
+    } 
+    
+</style>
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <form method="POST" action="{% url 'register' %}"> 
+    {% csrf_token %}
+    <div class="registration-container">
+        <h2>Sign Up</h2>
+        
+            <div>
+                <label for="fullname">Full Name:</label>
+                <input type="text" id="Fullname" name="Fullname" placeholder="Enter your full name" required>
+            </div>
+            <div>
+                <label for="username">Username:</label>
+                <input type="text" id="Username" name="Username" placeholder="Enter your Username" required>
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="Email" name="Email" placeholder="Enter your Email" required>
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="Password" name="Password" placeholder="Enter your Password"required>
+            </div>
+            <div>
+                <label for="password">Repeat Password:</label>
+                <input type="Password" id="Password" name="Password" placeholder="Confirm your Password"required>
+            </div>
+            <div>
+                <input type="submit" value="Next">
+            </div>
+        </form>
+        <p align="center" class="login-link"><b>Already have account <a href="{% url 'login_entry' %}">Login</b></a></p>
+    </div>
+    {% include 'footer.html' %}
+</body>
+</html>
+

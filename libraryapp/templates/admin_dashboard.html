@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'libraryapp/static/style.css' %}">
+    <style>
+        body{
+          background-image: url('/static/images/4.jpg');
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: center;
+          background-attachment: fixed;
+          margin: 0; 
+          padding: 0;
+        }
+        h1{
+          font-size:40px;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          background: -webkit-linear-gradient(#eae870, #9b4040);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+      .header {
+            text-align: center; 
+            margin-top: 20px; 
+        }
+        .menu{
+          
+          border-radius: 10px;
+          width:30%;
+          margin-left:500px;
+          background:#e3dfdc9c;
+        }
+       
+        .menu a {
+            border:3px;
+            text-decoration: none;
+            font-size:40px; 
+            color: #021d33; 
+            padding: 20px 20px; 
+            display: inline-block; 
+            margin: 0 10px; 
+            transition: background-color 0.3s; 
+            border-radius: 5px;
+            font-weight:bold; 
+        }
+          
+
+        
+        .menu a:hover {
+            background-color: #ddd; 
+        }
+
+      
+        .menu {
+            text-align: center; 
+            margin-top: 30px; 
+        }
+        .right-top a {
+            font-weight: bold;
+            margin-left: 10px;
+            text-decoration: none;
+            color:black;
+            padding: 10px ;
+        }
+        .right-top a:hover {
+          background-color: #315e7bd6;
+          border-radius: 10px;
+        }
+
+    </style>
+</head>
+<body>
+  
+    {% include 'navbar.html' %}
+    <div class="right-top">
+        <a href="{% url 'logout' %}">Logout</a>
+    </div>
+    <div class="header">
+        <h1>Admin Dashboard</h1>
+    </div>
+    <div class="menu">
+       
+        <a href="{% url 'Book_entry' %}">New Book Entry</a>
+        <a href="{% url 'display' %}">Display Available Books</a>
+        <a href="{% url 'student_details' %}">Students Details</a>
+        <a href="{% url 'staff_display' %}">Staff Details</a>
+    </div>
+    {% include 'footer.html' %}
+</body>
+</html>

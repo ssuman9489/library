@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book List</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'libraryapp/static/style.css' %}">
+    <style>
+        body {
+            background-image: url('{% static 'images/2.jpg' %}');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin: 0; 
+            padding: 0;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        h1 {
+            text-align: center;
+            font-size: 40px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: -webkit-linear-gradient(#eae870, #9b4040);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        th, td {
+            border: 1px solid #030405;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        td {
+            background-color: #dcc7bad7;
+        }
+        tr:nth-child(even) {
+            background-color: #948074d7;
+        }
+        img {
+            max-width: 100px;
+            max-height: 100px;
+        }
+        .right-top a {
+            font-weight: bold;
+            margin-left: 10px;
+            text-decoration: none;
+            color: black;
+            padding: 10px;
+        }
+        .right-top a:hover {
+            background-color: #315e7bd6;
+            border-radius: 10px;
+        }
+        .last {
+            margin-top: 50%;
+        }
+        input[type="text"], select[name="filter"] {
+            margin-bottom: 20px;
+            width: 400px;
+            margin-left: 65%;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            margin-right: 5px;
+        }
+        button[type="submit"] {
+            padding: 8px 12px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <div class="right-top">
+        <a href="{% url 'logout' %}">Logout</a>
+    </div>
+
+    <h1>Issued Books</h1>
+    <table>
+        <tr>
+            <th>ID</th><th>Issue date</th><th>Return date</th>
+        
+        </tr>
+            {% for i in P1 %}
+        <tr>
+            <td>{{ i.id }}</td>
+            <td>{{ i.issuedate }}</td>
+            <td>{{ i.returndate }}</td>
+        </tr> 
+       
+        {% endfor %} 
+    </table>
+   
+
+    <div class="last">
+        {% include 'footer.html' %}
+    </div>
+
+</body>
+</html>

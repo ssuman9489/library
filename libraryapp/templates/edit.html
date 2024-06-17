@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'libraryapp/static/style.css' %}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('/static/images/4.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+        }
+        .right-top a {
+            font-weight: bold;
+            margin-left: 10px;
+            text-decoration: none;
+            color: black;
+            padding: 10px;
+        }
+        .right-top a:hover {
+            background-color: #315e7bd6;
+            border-radius: 10px;
+        }
+        .container {
+            background-color: Lightskyblue;
+            width: 30%;
+            margin: 0 auto;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input[type="text"],
+        .form-group input[type="date"],
+        .form-group input[type="file"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .form-group input[type="reset"],
+        .form-group input[type="submit"] {
+            padding: 10px 15px;
+            font-size: 16px;
+        }
+        .form-group input[type="reset"] {
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .form-group input[type="submit"] {
+            background-color: green;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .form-group input[type="reset"]:hover,
+        .form-group input[type="submit"]:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <div class="right-top">
+        <a href="{% url 'logout' %}">Logout</a>
+    </div>
+    <form method="POST" action="{% url 'update' T1.id %}" enctype="multipart/form-data"> 
+        {% csrf_token %}
+        <div class="container">
+            <h3 align="center">Edit Books Details</h3>
+            <div class="form-group">
+                <label for="T1">Book Name:</label>
+                <input type="text" id="T1" name="T1" value="{{ T1.BookName }}">
+            </div>
+            <div class="form-group">
+                <label for="T2">Description:</label>
+                <input type="text" id="T2" name="T2" value="{{ T1.Description }}">
+            </div>
+            <div class="form-group">
+                <label for="T3">Author:</label>
+                <input type="text" id="T3" name="T3" value="{{ T1.Author }}">
+            </div>
+            <div class="form-group">
+                <label for="T4">Price:</label>
+                <input type="text" id="T4" name="T4" value="{{ T1.Price }}">
+            </div>
+            <div class="form-group">
+                <label for="T5">Category:</label>
+                <input type="text" id="T5" name="T5" value="{{ T1.Category }}">
+            </div>
+            <div class="form-group">
+                <label for="T6">Pages:</label>
+                <input type="text" id="T6" name="T6" value="{{ T1.Pages }}">
+            </div>
+            <div class="form-group">
+                <label for="T7">Date Of Publish:</label>
+                <input type="date" id="T7" name="T7" value="{{ T1.Date_Of_Publish }}">
+            </div>
+            <div class="form-group">
+                <label for="T8">Book CoverPage Photo:</label>
+                <input type="file" id="T8" name="T8" value="{{ T1.Photo }}">
+            </div>
+            <div class="form-group">
+                <input type="reset">
+                <input type="submit" value="Update">
+            </div>
+        </div>
+    </form>
+    {% include 'footer.html' %}
+    <script>
+        function previewImage(event) {
+            const reader = new FileReader();
+            reader.onload = function() {
+                const output = document.getElementById('preview');
+                output.src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
+</body>
+</html>

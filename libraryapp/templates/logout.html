@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    {% load static %}
+    <style>
+        body{
+            max-height:100%;
+            min-height: 100%;
+            background-image: url('/static/images/login.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
+        .last{
+            margin-top: 39%;
+        }
+        a h3{
+            
+            font-size: 30px;
+            text-decoration: none;
+        }
+    </style>    
+</head>
+<body>
+    <form name="form1" method="POST" action="{% url 'login_submit' %}"> 
+        {% csrf_token %}
+    <div class="login-container" align="center">
+        <h1>Logout successfull</h1>
+        
+
+        <div align="center">
+            <a href="{% url 'main' %}" ><h3>Home</h3></a>    
+        </div>   
+    </div>
+    </form><div class="last">
+    {% include 'footer.html' %}</div>
+</body>
+</html>

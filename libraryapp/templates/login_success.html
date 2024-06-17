@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    {% load static %}
+    
+</head>
+<body>
+    <form name="form1" method="POST" action="{% url 'login_submit' %}"> 
+        {% csrf_token %}
+    <div class="login-container" align="center">
+        <h1>Login successfull</h1>
+        <h2>Welcome {{Username}} To Library</h2>
+
+        <div align="center">
+            <a href="{% url 'admin_dashboard' %}" ><h3>Admin</h3></a>    
+            </div>   
+    </div>
+    </form>
+    {% include 'footer.html' %}
+</body>
+</html>

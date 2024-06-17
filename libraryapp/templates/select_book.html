@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'libraryapp/static/style.css' %}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('/static/images/4.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+        }
+        .right-top a {
+            font-weight: bold;
+            margin-left: 10px;
+            text-decoration: none;
+            color: black;
+            padding: 10px;
+        }
+        .right-top a:hover {
+            background-color: #315e7bd6;
+            border-radius: 10px;
+        }
+        .container {
+            
+            width: 30%;
+            margin: 0 auto;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input[type="text"],
+        .form-group input[type="file"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+         }
+        
+         .form-group a {
+            background-color: green;
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 16px;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 145px;
+
+        }
+        
+        .form-group a:hover {
+            opacity: 0.8;
+        }
+        img{
+            width:50%;
+            height:150px;
+            margin-left:100px;
+        }
+    </style>
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <div class="right-top">
+        <a href="{% url 'logout' %}">Logout</a>
+    </div>
+        <div class="container">
+            <h3 align="center">Issue Books </h3>
+            <div class="form-group">
+                <label for="T1">Book Name:</label>
+                <input type="text" id="T1" name="T1" value="{{ T1.BookName }}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="T2">Description:</label>
+                <input type="text" id="T2" name="T2" value="{{ T1.Description }}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="T3">Author:</label>
+                <input type="text" id="T3" name="T3" value="{{ T1.Author }}" readonly>
+            </div>
+            
+            <div class="form-group">
+                <label for="T5">Category:</label>
+                <input type="text" id="T5" name="T5" value="{{ T1.Category }}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="T8">Book CoverPage Photo:</label>
+                <img src="{{ T1.Photo.url }}"  value="{{ T1.Photo }}" readonly>
+            </div>
+            <div class="form-group">
+            <td><a href="{% url 'book_issue'  %}">Issue Book</a></td>
+            </div>
+        </div>
+       
+
+    {% include 'footer.html' %}
+    <script>
+        function previewImage(event) {
+            const reader = new FileReader();
+            reader.onload = function() {
+                const output = document.getElementById('preview');
+                output.src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    {% load static %}
+    <style>
+        body {
+            background-image: url('/static/images/1.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        h1 {
+          background: -webkit-linear-gradient(#a426d6, #c43a3a);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          margin-bottom:10px;
+          padding:0;
+          width: 100%;
+          font-size:80px;
+          text-align:center;
+        }
+        h2 {
+          background: -webkit-linear-gradient(#f2c222, #f25f04);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+            margin-left:20px;
+            margin-top:200px;
+            padding:0;
+            width: 100%;
+            font-size:40px;
+            text-align:center;
+          }
+        h3{
+            
+            text-align:center;
+            font-size:30px;
+            margin-top:220px;
+        }
+        h3 a{
+            text-decoration:none;
+            color:white;
+        }
+        #h1-fade-in {
+          
+          animation: fadeIn 5s;
+        }
+        @keyframes fadeIn {
+          0% {
+            opacity: 0;
+          }
+          100% {
+            opacity: 1;
+          }
+        }
+        
+          #h2-fade-in {
+           -webkit-animation: fadeIn 5s; 
+           0% {
+            opacity: 0;
+          }
+          100% {
+            opacity: 2;
+          }
+        }
+    
+      </style>
+      <body>
+        <body>
+            <div id="h1-fade-in">
+            <h1>WELCOME TO LIBRARY MANAGEMENT SYSTEM</h1>
+            </div>
+            <div id="h2-fade-in"> 
+                <h2> You Are Entering The Library Management System<br>Where you will Get All The Deepest Knowledge Of Everything</h2>
+            </div>
+            <div>
+            <h3> <a href="{% url 'main' %}">Click to Continue</a></h3>
+            </div>
+
+</body>
+</html>

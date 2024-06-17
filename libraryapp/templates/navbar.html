@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>navbar</title>
+    <style>
+        .navbar {
+            background: linear-gradient( to right ,#cf8557, #e3dfdc9c ,#cf8557 );
+            overflow: hidden;
+            border-radius: 2px;
+            margin: 0px ;
+            padding: 0px;
+            display: flex;
+            
+        }
+          .navbar ul {
+            list-style-type: none;
+            margin: 0px ;
+            padding: 5px;
+            display: flex;
+            justify-content: left;
+          }
+          .navbar li {
+            margin:0 20px;
+            
+           
+          }
+          .navbar a {
+            font-weight: bold;
+            color: black;
+            font-size:20px;
+            text-decoration: none;
+            padding: 10px ;
+            display: block;
+          }
+          .navbar a:hover {
+            background-color: #315e7bd6;
+            border-radius: 10px;
+          }
+        
+        .right-top {
+            padding: 0 20px;
+            font-size:23px;
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <ul>
+          <li><a href="{% url 'main' %}">Home</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'login_entry' %}">Contact</a></li>
+        </ul>
+      </div>
+    
+    
+    
+
+</body>
+</html>

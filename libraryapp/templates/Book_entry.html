@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entry</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('/static/images/4.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 50%;
+            margin: 0 auto;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="file"] {
+            width: calc(100% - 10px);
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type="reset"],
+        input[type="submit"] {
+            margin: 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        input[type="reset"] {
+            background-color: #de6868;
+            width: 150px;
+            font-size: 15px;
+        }
+
+        input[type="submit"] {
+            background-color: #2577f1;
+            color: white;
+            width: 150px;
+            font-size: 15px;
+        }
+
+        .right-top a {
+            font-weight: bold;
+            margin-left: 10px;
+            text-decoration: none;
+            color: black;
+            padding: 10px;
+        }
+
+        .right-top a:hover {
+            background-color: #315e7bd6;
+            border-radius: 10px;
+        }
+
+        .preview {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .preview img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    {% include 'navbar.html' %}
+    <div class="right-top">
+        <a href="{% url 'logout' %}">Logout</a>
+    </div>
+    <div class="container">
+        <h1 align="center">Book Entry</h1>
+        <form method="POST" action="{% url 'submit' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="T1">Book Title:</label>
+                <input type="text" id="T1" name="T1">
+            </div>
+            <div class="form-group">
+                <label for="T2">Description:</label>
+                <input type="text" id="T2" name="T2">
+            </div>
+            <div class="form-group">
+                <label for="T3">Author:</label>
+                <input type="text" id="T3" name="T3">
+            </div>
+            <div class="form-group">
+                <label for="T4">Price:</label>
+                <input type="text" id="T4" name="T4">
+            </div>
+            <div class="form-group">
+                <label for="T5">Category:</label>
+                <input type="text" id="T5" name="T5">
+            </div>
+            <div class="form-group">
+                <label for="T6">Pages:</label>
+                <input type="text" id="T6" name="T6">
+            </div>
+            <div class="form-group">
+                <label for="T7">Date Of Publish:</label>
+                <input type="date" id="T7" name="T7">
+            </div>
+            <div class="form-group">
+                <label for="T8">Book CoverPage Photo:</label>
+                <input type="file" id="T8" name="T8" accept="image/*" onchange="previewImage(event)">
+            </div>
+            <div class="preview">
+                <img id="preview" src="#" alt="Image Preview" style="display: none;">
+            </div>
+            <div class="form-group" align="center">
+                <input type="reset" onclick="clearImage()">
+                <input type="submit">
+            </div>
+        </form>
+    </div>
+    {% include 'footer.html' %}
+
+    <script>
+        function previewImage(event) {
+            const input = event.target;
+            const preview = document.getElementById('preview');
+
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            } else {
+                preview.style.display = 'none';
+            }
+        }
+
+        function clearImage() {
+            const preview = document.getElementById('preview');
+            const input = document.getElementById('T8');
+            
+            input.value = ''; // Clear the file input
+            preview.src = '#'; // Clear the preview
+            preview.style.display = 'none'; // Hide the preview
+        }
+    </script>
+</body>
+
+</html>

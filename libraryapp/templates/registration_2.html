@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registration_Details</title>
+<style>
+    body {
+        background-image: url('/static/images/login.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    }
+    .registration-container {
+        max-width: 400px;
+        margin-top: 100px;
+        margin-left: 900px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+    .registration-container h2 {
+        text-align: center;
+    }
+    .registration-container div {
+        margin-bottom: 15px;
+    }
+    .registration-container label {
+        display: block;
+        font-weight: bold;
+    }
+    .registration-container input[type="date"],
+    .registration-container select {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box; 
+    }
+    .registration-container input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+    }
+    .registration-container input[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+    label {
+        font-weight: bold;
+    }
+    input[type="text"], input[type="file"] {
+        padding: 8px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    input[type="text"]:focus, input[type="file"]:focus {
+        outline: none;
+        border-color: dodgerblue;
+    }
+    input[type="file"] {
+        padding-top: 5px;
+    }
+    @media screen and (max-width: 768px) {
+        .registration-container {
+            max-width: 90%;
+            margin: 50px auto;
+        }
+    }
+</style>
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <form method="POST" action="{% url 'registration_2' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="registration-container">
+            <h2>Sign Up</h2>
+            <div>
+                <label for="DOB">Date of Birth:</label>
+                <input type="date" id="DOB" name="DOB">
+            </div>
+            <div>
+                <label for="Gender">Gender:</label>
+                <select id="Gender" name="Gender" required>
+                    <option value="Select">Select</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div>
+                <label for="category">Category:</label>
+                <select id="category" name="category" required>
+                    <option value="Select">Select</option>
+                    <option value="admin">Admin</option>
+                    <option value="staff">Staff</option>
+                    <option value="student">Student</option>
+                </select>
+            </div>
+            <div>
+                <label for="Language">Language:</label>
+                <select id="Language" name="Language" required>
+                    <option value="" disabled selected>Select</option>
+                    <option value="Hindi">Hindi</option>
+                    <option value="English">English</option>
+                    <option value="Spanish">Spanish</option>
+                    <option value="Chinese">Chinese</option>
+                    <option value="Japanese">Japanese</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div>
+                <label for="aadhar">Aadhar Number:</label>
+                <input type="text" id="Aadhar" name="Aadhar" placeholder="Enter your Aadhar number" required>
+            </div>
+            <div>
+                <label for="Phone">Phone No.:</label>
+                <input type="text" id="Phone" name="Phone" placeholder="Enter your Phone Number" required>
+            </div>
+            <div>
+                <br>
+                <label for="Profilepic">Profile Pic:</label>
+                <input type="file" id="Profilepic" name="Profilepic" accept="image/*">
+                <img id="preview" src="#" alt="Profile Preview" style="display:none; margin-top:10px; max-width:100%; height:auto;">
+            </div>
+            <div>
+                <br>
+                <input type="submit" value="Register">
+            </div>
+        </div>
+    </form>
+    {% include 'footer.html' %}
+    <script>
+        function previewImage(event) {
+            const input = event.target;
+            const preview = document.getElementById('preview');
+
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            } else {
+                preview.style.display = 'none';
+            }
+        }
+
+        function clearImage() {
+            const preview = document.getElementById('preview');
+            const input = document.getElementById('Profilepic');
+            
+            input.value = ''; // Clear the file input
+            preview.src = '#'; // Clear the preview
+            preview.style.display = 'none'; // Hide the preview
+        }
+    </script>
+</body>
+</html>

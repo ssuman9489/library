@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <style>
+        body{
+            background-image: url('/static/images/4.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin: 0; 
+            padding: 0; 
+        }
+        h1{
+            margin-left: 39%;
+            margin-top: 2%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: -webkit-linear-gradient(#eae870, #9b4040);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size:40px;
+            
+          }
+        .right-top a {
+            font-weight: bold;
+            margin-left: 10px;
+            text-decoration: none;
+            color:black;
+            padding: 10px ;
+        }
+        .right-top a:hover {
+          background-color: #315e7bd6;
+          border-radius: 10px;
+        }
+        .display{
+            border-radius: 20px;
+            width:30%;
+            background-color: #9f948dba;
+            margin-left: 35%;
+            margin-top: 5%;
+            text-align:center;  
+        }
+        .display a{
+            font-size:30px;
+            text-decoration: none;
+            color:black; 
+        }
+        .display a:hover {
+            color: blue; 
+        }
+        .last{
+            margin-top: 50%;
+        }
+    </style>
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <div class="right-top">
+        <a href="{% url 'logout' %}">Logout</a>
+    </div>
+    
+    <h1>Staff Dashboard</h1>
+   <div class="display" >
+        <a href="{% url 'student_details' %}"><h3>Students Details</h3></a>
+        <a href="{% url 'student_displaybook' %}"><h3>Display Available Books</h3></a>
+   
+   </div>
+   <div class="last">
+    {% include 'footer.html' %}</div>
+</body>
+</html>
